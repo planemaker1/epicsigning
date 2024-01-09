@@ -1,0 +1,36 @@
+#==========================#
+#     Made by planemaker1
+#    discord.gg/u7jbzy82GD
+# Please dont steal the Skript
+#==========================#
+options:
+	prefix: &cEpic Signing &f»
+
+
+command /sign <text>:
+	usage: {@prefix} /sign <text>
+	permission: sign.use
+	permission message: &cYou can't do that!
+	trigger:
+		if arg 1 is set:
+			set lore of player's tool to "%colored arg 1% &f- &fSigned by &a%player%"
+			send "{@prefix} Successfully signed the Item."
+			stop trigger
+				
+command /unsign:
+	usage: {@prefix} /unsign
+	permission: sign.unsign, unsign.use
+	permission message: &cYou can't do that!
+	trigger:
+		set line 1 of lore of player's tool to ""
+		send "{@prefix} &fSuccesfully unsigned your held Item!"
+		stop trigger
+		
+command /rename <text>:
+	permission: rename.use
+	permission message: &cYou can't do that!
+	usage: &c/rename &f<&cText&f>
+	trigger:		
+		set held item's name to "%colored arg 1%"
+		send "{@prefix} &fRenamed your held item to: %colored arg 1%&f!"
+		stop
